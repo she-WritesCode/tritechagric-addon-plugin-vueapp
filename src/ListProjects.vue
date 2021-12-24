@@ -8,7 +8,11 @@
       </div>
     </div>
     <div class="flex flex-col justify-center items-center py-28 px-10" v-else>
-      <img class="w-32 mb-4" alt="No investments yet" src="https://dashboard.agric.tritech.com.ng/img/box.1cace0d8.png" />
+      <img
+        class="w-32 mb-4"
+        alt="No investments yet"
+        src="https://dashboard.agric.tritech.com.ng/img/box.1cace0d8.png"
+      />
       <div class="text-xl">No projects yet, check back later</div>
     </div>
   </div>
@@ -50,7 +54,6 @@ export default {
     }
   },
   mounted() {
-    console.log('mounted')
     this.getProjects().then(() => console.log('done'));
   },
 }
