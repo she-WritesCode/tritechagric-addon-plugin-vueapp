@@ -1,6 +1,6 @@
 <template>
   <div class="page-heading mb-4">
-    <h1 class="text-3xl">{{ title }}</h1>
+    <h3 class="text-3xl">{{ title }}</h3>
     <div class="text-gray-600">{{ subtitle }}</div>
   </div>
 </template>
