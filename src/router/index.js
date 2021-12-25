@@ -1,10 +1,10 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import ProjectDetailsApp from "../ProjectDetailsApp.vue";
+import ListProjects from "../components/ListProjectsPublic.vue";
 import ProjectDetails from "../components/ProjectDetails.vue";
 
 const routes = [
-	{ path: "/", component: ProjectDetailsApp },
-	{ path: "/:slug", component: ProjectDetails },
+	{ path: "/", component: ListProjects },
+	{ path: "/:slug", name: "ProjectDetails", component: ProjectDetails },
 ];
 
 const router = createRouter({

@@ -10,7 +10,7 @@
         </div>
     </section>
     <section v-else class="w-full">
-        <PageHeading :title="project.title" subtitle />
+        <PageHeading :title="project.title" subtitle class="mb-16" />
         <div class>
             <div class>
                 <div class="mb-8 rounded-2xl bg-white shadow-lg">
@@ -121,6 +121,13 @@
                 </div>
             </div>
         </div>
+        <div class="text-center w-full text-lg">
+            <router-link :to="'/'">
+                <a>
+                    <FontAwesomeIcon :icon="faArrowLeft" class="mr-4" />See more projects to fund
+                </a>
+            </router-link>
+        </div>
     </section>
 </template>
 
@@ -129,7 +136,7 @@ import { defineComponent } from "vue";
 import Button from "primevue/button"
 import InputNumber from "primevue/inputnumber"
 import ProgressBar from "primevue/progressbar"
-import { faMapMarkedAlt, faWarehouse, faShieldAlt } from '@fortawesome/free-solid-svg-icons'
+import { faMapMarkedAlt, faWarehouse, faShieldAlt, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { toCurrency } from "../utils/Helpers";
 import ProfitSimulation from "./ProfitSimulation.vue";
@@ -148,6 +155,7 @@ export default defineComponent({
             faMapMarkedAlt,
             faWarehouse,
             faShieldAlt,
+            faArrowLeft,
         }
     },
     data: () => ({
@@ -177,18 +185,17 @@ export default defineComponent({
             return (this.project.totalSlots - this.project.availableSlots) * this.project.fee;
         },
         query() {
-            return `slug=${this.$route.params.slug}&join=investments&join=categories&join=updates&sort=id,ASC`;
+            return `_where%5Bslug%5D=${this.$route.params.slug}&join=investments&join=categories&join=updates&sort=id,ASC&limit=0`;
         },
-    },
-    beforeMount() {
-        console.log(this.$route.params.slug)
     },
     mounted() {
         this.getProject().then(() => console.log('done'));
-        console.log(this.$route.params.slug)
     },
 })
 </script>
 
-<style scoped>
+<style>
+.prose {
+    max-width: 100%;
+}
 </style>
