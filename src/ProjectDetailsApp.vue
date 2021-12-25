@@ -7,9 +7,6 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
     name: "ProjectDetailsApp",
-    mounted() {
-        console.log(this.$route)
-    },
 })
 </script>
 
