@@ -18,8 +18,7 @@
           >{{ project?.categories.map(category => category.title).join(",") }}</div>
           <a
             class="cursor-pointer hover:text-primary-700"
-            :href="`https://dashboard.agric.tritech.com.ng/projects/${project.slug}`"
-            target="_blank"
+            :href="`${wordpressUrl}/${project.slug}`"
           >
             <div class="font-semibold text-xl">{{ project?.title }}</div>
           </a>
@@ -43,8 +42,7 @@
           </div>
           <div class="mt-2 flex flex-wrap gap-3">
             <a
-              :href="`https://dashboard.agric.tritech.com.ng/projects/${project.slug}`"
-              target="_blank"
+              :href="`${wordpressUrl}/${project.slug}`"
               class="cursor-pointer bg-primary-500 border-2 border-primary-500 px-3 py-2 rounded-full text-sm text-white font-bold shadow hover:shadow-lg hover:border-primary-600 focus:text-primary-500 hover:bg-primary-600"
             >View Project</a>
           </div>
@@ -95,8 +93,10 @@ export default defineComponent({
     }
   },
   setup() {
+    const wordpressUrl = 'https://agric.tritech.com.ng/projects-to-fund/#'
     return {
       toCurrency,
+      wordpressUrl,
     }
   },
 })

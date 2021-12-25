@@ -13,7 +13,7 @@
         <PageHeading :title="project.title" subtitle class="mb-16" />
         <div class>
             <div class>
-                <div class="mb-8 rounded-2xl bg-white shadow-lg border">
+                <div class="mb-8 rounded-2xl bg-white shadow-lg">
                     <div class="grid md:grid-cols-2 gap-8">
                         <div class>
                             <img
@@ -95,10 +95,7 @@
                     </div>
                 </div>
 
-                <div
-                    v-if="project.investments?.length > 0"
-                    class="text-sm uppercase bg-white shadow-lg border mb-8"
-                >
+                <div class="text-sm uppercase bg-white shadow-lg mb-8">
                     <ProgressBar :value="progress" class="h-20 md:h-6">
                         <div
                             class="flex flex-wrap flex-col-reverse md:flex-row md:justify-between font-medium pt-1 pb-2 px-2"
@@ -113,10 +110,10 @@
                     </ProgressBar>
                 </div>
 
-                <div class="mb-8 rounded-2xl bg-white shadow-lg border py-8 px-6">
+                <div class="mb-8 rounded-2xl bg-white shadow-lg py-8 px-6">
                     <ProfitSimulation :project="project" :quantity="quantity" />
                 </div>
-                <div class="mb-8 rounded-2xl bg-white shadow-lg border py-8 px-6">
+                <div class="mb-8 rounded-2xl bg-white shadow-lg py-8 px-6">
                     <h3 class="text-2xl mb-4">Details</h3>
                     <div class="content">
                         <Markdown :source="project.description" />
@@ -124,14 +121,14 @@
                 </div>
             </div>
         </div>
-        <div class="text-center w-full text-lg">
-            <router-link :to="'/'">
-                <a>
-                    <FontAwesomeIcon :icon="faArrowLeft" class="mr-4" />See more projects to fund
-                </a>
-            </router-link>
-        </div>
     </section>
+    <div class="text-center w-full text-lg">
+        <router-link :to="'/'">
+            <a>
+                <FontAwesomeIcon :icon="faArrowLeft" class="mr-4" />See more projects to fund
+            </a>
+        </router-link>
+    </div>
 </template>
 
 <script>
@@ -188,7 +185,7 @@ export default defineComponent({
             return (this.project.totalSlots - this.project.availableSlots) * this.project.fee;
         },
         query() {
-            return `_where%5Bslug%5D=${this.$route.params.slug}&join=investments&join=categories&join=updates&sort=id,ASC&limit=0`;
+            return `filter=slug||$eq||${this.$route.params.slug}&join=investments&join=categories&join=updates&sort=id,ASC&limit=1`;
         },
     },
     mounted() {
